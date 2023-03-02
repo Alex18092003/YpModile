@@ -14,9 +14,15 @@ public class Onboarding extends AppCompatActivity {
         setContentView(R.layout.activity_onboarding);
     }
 
-    public  void Entrance(View v)
+    public  void TransitionToEntrance(View v)
     {
         startActivity(new Intent(this, Login.class));
+
+    }
+
+    public  void TransitionToRegistration(View v)
+    {
+        startActivity(new Intent(this, Register.class));
 
     }
 }

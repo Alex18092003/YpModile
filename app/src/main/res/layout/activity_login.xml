@@ -40,6 +40,7 @@
             android:layout_marginTop="50dp"
             android:layout_marginBottom="15dp"
             app:srcCompat="@drawable/logo"
+
             tools:ignore="MissingConstraints"></ImageView>
 
         <TextView
@@ -62,8 +63,8 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
         android:orientation="vertical"
         app:flow_verticalAlign="center"
+        android:layout_marginRight="40dp"
         android:layout_marginLeft="40dp"
-
         app:flow_horizontalAlign="center">
 
     <EditText
@@ -91,7 +92,8 @@
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:textSize="18dp"
-
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="50dp"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -99,12 +101,13 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
         android:fontFamily="@font/alegreya_sans"
         android:text="Sign in"
         android:textAllCaps="false"
         android:textSize="20dp"
+        android:onClick="TransitionToMain"
         app:layout_constraintBottom_toTopOf="@+id/textView4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"></Button>
@@ -117,22 +120,24 @@
         android:text="Register"
         android:textColor="@color/white"
         android:textSize="20dp"
-
+android:layout_marginBottom="15dp"
+        android:layout_marginTop="15dp"
+        android:onClick="TransitionToRegistration"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="598dp"></TextView>
 
     <Button
-        android:layout_width="250dp"
-        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
         android:fontFamily="@font/alegreya_sans"
         android:text="Профиль"
         android:textAllCaps="false"
         android:textSize="20dp"
+        android:onClick="TransitionToMain"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"></Button>
-
 
     </LinearLayout>
 
