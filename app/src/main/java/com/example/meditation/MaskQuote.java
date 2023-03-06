@@ -1,25 +1,26 @@
 package com.example.meditation;
 
-public class MaskFeeling {
+public class MaskQuote {
 
     private  int id;
     private  String title;
-    private  int position;
     private String image;
+    private  String description;
 
 
-    public MaskFeeling(int id, String title, int position, String image) {
+
+    public MaskQuote(int id, String title, String image, String description) {
         this.id = id;
         this.title = title;
-        this.position = position;
         this.image = image;
+        this.description = description;
     }
 
     public int getId() {
         return id;
     }
-    public int getPosition() {
-        return position;
+    public String getDescription() {
+        return description;
     }
 
     public String getTitle() {
@@ -38,10 +39,7 @@ public class MaskFeeling {
     public void setId(int id) {
         this.id = id;
     }
-    public void setPosition(int position) {
-        this.position = position;
+    public void setDescription(String description) {
+        this.description = description;
     }
-
-
-
 }
