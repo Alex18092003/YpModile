@@ -1,6 +1,7 @@
 package com.example.meditation;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.Call;
 import retrofit2.http.PUT;
@@ -17,5 +18,6 @@ public interface RetrofitAPI {
 //
 //    @DELETE("Teachers/{id}")
 //    Call<DataModal> deleteData(@Path("id") int id);
+
 
 }

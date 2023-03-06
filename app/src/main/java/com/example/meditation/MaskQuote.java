@@ -22,7 +22,6 @@ public class MaskQuote {
     public String getDescription() {
         return description;
     }
-
     public String getTitle() {
         return title;
     }

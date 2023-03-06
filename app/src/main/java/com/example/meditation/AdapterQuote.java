@@ -57,13 +57,13 @@ public class AdapterQuote extends BaseAdapter  {
 
         TextView title = v.findViewById(R.id.title);
         TextView description = v.findViewById(R.id.description);
-        ImageView Image = v.findViewById(R.id.image);
+        //ImageView Image = v.findViewById(R.id.image);
 
         MaskQuote maskQuote = maskList.get(position);
         title.setText(maskQuote.getTitle());
         description.setText(maskQuote.getDescription());
 
-        Image.setImageBitmap(getUserImage(maskQuote.getImage()));
+        //Image.setImageBitmap(getUserImage(maskQuote.getImage()));
         return  v;
     }
 }
