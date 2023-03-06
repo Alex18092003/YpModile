@@ -35,9 +35,9 @@ public class Main extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        ListView recyclerView = findViewById(R.id.ListQuotes);
+        ListView lvProduct = findViewById(R.id.ListQuotes);
         adapterQuote = new AdapterQuote(Main.this, maskQuoteList);
-        recyclerView.setAdapter(adapterQuote);
+        lvProduct.setAdapter(adapterQuote);
 
         new GetQuote().execute();
     }
