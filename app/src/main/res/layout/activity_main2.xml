@@ -85,16 +85,15 @@
         tools:ignore="MissingConstraints">
     </ListView>
 
-    <ListView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ListQuotes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:numColumns="1"
         android:scrollbars="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ListFeelings"
-        tools:ignore="MissingConstraints"></ListView>
+        tools:ignore="MissingConstraints"></androidx.recyclerview.widget.RecyclerView>
 
 
     <ImageView
