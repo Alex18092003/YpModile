@@ -8,5 +8,4 @@ public class MaskFeeling {
     private String image;
 
 
-
 }
