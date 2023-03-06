@@ -1,7 +1,4 @@
 package com.example.meditation;
 
-public interface RetrofitAPI {
-
-
-
+public class AdapterFeelings {
 }
