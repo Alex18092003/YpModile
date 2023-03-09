@@ -1,6 +1,11 @@
 package com.example.meditation;
 
-public class MaskQuote {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
+public class MaskQuote implements Parcelable {
 
     private  int id;
     private  String title;
@@ -16,6 +21,13 @@ public class MaskQuote {
         this.description = description;
     }
 
+    protected MaskQuote(Parcel in) {
+        id = in.readInt();
+        title = in.readString();
+        image = in.readString();
+        description = in.readString();
+    }
+
     public int getId() {
         return id;
     }
@@ -29,6 +41,18 @@ public class MaskQuote {
         return image;
     }
 
+    public static final Creator<MaskQuote> CREATOR = new Creator<MaskQuote>() {
+        @Override
+        public MaskQuote createFromParcel(Parcel in) {
+            return new MaskQuote(in);
+        }
+
+        @Override
+        public MaskQuote[] newArray(int size) {
+            return new MaskQuote[size];
+        }
+    };
+
     public void setTitle(String title) {
         this.title = title;
     }
@@ -40,5 +64,18 @@ public class MaskQuote {
     }
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(title);
+        dest.writeString(image);
+        dest.writeString(description);
     }
 }

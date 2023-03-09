@@ -24,10 +24,7 @@ import java.util.List;
 
 public class Main extends AppCompatActivity {
 
-
-    private AdapterFeelings adapterFeelings;
     private  AdapterQuote adapterQuote;
-    private List<MaskFeeling> maskFeelingList = new ArrayList<>();
     private List<MaskQuote> maskQuoteList = new ArrayList<>();
 
     @Override
@@ -44,11 +41,10 @@ public class Main extends AppCompatActivity {
 
     private  class GetQuote extends AsyncTask<Void, Void, String>
     {
-
         @Override
         protected String doInBackground(Void... voids) {
             try {
-                URL url = new URL("mskko2021.mad.hakta.pro/api");
+                URL url = new URL("http://mskko2021.mad.hakta.pro/api/quotes");
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
                 StringBuilder result = new StringBuilder();

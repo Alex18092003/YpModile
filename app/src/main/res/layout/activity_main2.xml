@@ -89,12 +89,12 @@
         android:id="@+id/ListQuotes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:scrollbars="vertical"
+
         app:layout_constraintBottom_toTopOf="@+id/imageView11"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ListFeelings"
-        tools:ignore="MissingConstraints"></ListView>
+        ></ListView>
 
 
     <ImageView
