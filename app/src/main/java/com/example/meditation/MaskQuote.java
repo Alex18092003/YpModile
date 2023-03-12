@@ -12,7 +12,17 @@ public class MaskQuote implements Parcelable {
     private String image;
     private  String description;
 
+    public static final Creator<MaskQuote> CREATOR = new Creator<MaskQuote>() {
+        @Override
+        public MaskQuote createFromParcel(Parcel in) {
+            return new MaskQuote(in);
+        }
 
+        @Override
+        public MaskQuote[] newArray(int size) {
+            return new MaskQuote[size];
+        }
+    };
 
     public MaskQuote(int id, String title, String image, String description) {
         this.id = id;
@@ -41,17 +51,7 @@ public class MaskQuote implements Parcelable {
         return image;
     }
 
-    public static final Creator<MaskQuote> CREATOR = new Creator<MaskQuote>() {
-        @Override
-        public MaskQuote createFromParcel(Parcel in) {
-            return new MaskQuote(in);
-        }
 
-        @Override
-        public MaskQuote[] newArray(int size) {
-            return new MaskQuote[size];
-        }
-    };
 
     public void setTitle(String title) {
         this.title = title;
