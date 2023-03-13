@@ -3,7 +3,6 @@ package com.example.meditation;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import androidx.annotation.NonNull;
 
 public class MaskQuote implements Parcelable {
 

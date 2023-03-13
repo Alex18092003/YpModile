@@ -45,9 +45,9 @@ public class AdapterQuote extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View v = View.inflate(mContext, R.layout.masktwo, null);
 
-        TextView title = v.findViewById(R.id.title);
-        TextView description = v.findViewById(R.id.description);
-        ImageView Image = v.findViewById(R.id.image);
+        TextView title = v.findViewById(R.id.Qtitle);
+        TextView description = v.findViewById(R.id.Qdescription);
+        ImageView Image = v.findViewById(R.id.Qimage);
 
         MaskQuote maskQuote = maskList.get(position);
         title.setText(maskQuote.getTitle());

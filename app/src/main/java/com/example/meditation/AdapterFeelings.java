@@ -30,20 +30,6 @@ public class AdapterFeelings extends
         this.maskList = maskList;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-
-        public TextView title;
-        public ImageView image;
-
-        public ViewHolder(View view) {
-            super(view);
-            title = (TextView) view.findViewById(R.id.title);
-            image = (ImageView) view.findViewById(R.id.image);
-        }
-    }
-
-
-
 
     @Override
     public int getItemCount() {
@@ -98,6 +84,17 @@ public class AdapterFeelings extends
 
         protected void onPostExecute(Bitmap result) {
             bmImage.setImageBitmap(result);
+        }
+    }
+    public class ViewHolder extends RecyclerView.ViewHolder {
+
+        public TextView title;
+        public ImageView image;
+
+        public ViewHolder(@NonNull View view) {
+            super(view);
+            title = (TextView) view.findViewById(R.id.Ftitle);
+            image = (ImageView) view.findViewById(R.id.Fimage);
         }
     }
 

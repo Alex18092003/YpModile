@@ -8,8 +8,6 @@
     tools:context=".Main"
     android:background="@color/background">
 
-
-
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="30dp"
@@ -78,7 +76,6 @@
         android:id="@+id/ListFeelings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:numColumns="1"
         android:scrollbars="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -88,7 +85,7 @@
     <ListView
         android:id="@+id/ListQuotes"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
 
         app:layout_constraintBottom_toTopOf="@+id/imageView11"
         app:layout_constraintEnd_toEndOf="parent"

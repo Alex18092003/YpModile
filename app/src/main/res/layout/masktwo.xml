@@ -14,8 +14,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <TextView
-            android:id="@+id/title"
-            android:text="Загаловое"
+            android:id="@+id/Qtitle"
+            android:text="Заголовок"
             android:textSize="25dp"
             android:fontFamily="@font/alegreya"
             android:layout_width="wrap_content"
@@ -23,7 +23,7 @@
             ></TextView>
 
         <TextView
-            android:id="@+id/description"
+            android:id="@+id/Qdescription"
             android:text="Описание"
             android:textSize="15dp"
             android:fontFamily="@font/alegreya_sans"
@@ -42,7 +42,7 @@
 
     </LinearLayout>
 <ImageView
-    android:id="@+id/image"
+    android:id="@+id/Qimage"
     app:srcCompat="@drawable/goup36"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">

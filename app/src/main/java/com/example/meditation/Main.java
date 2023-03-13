@@ -48,8 +48,10 @@ public class Main extends AppCompatActivity {
         lvProduct2.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
             adapterFeelings  = new AdapterFeelings(Main.this, maskFeelingList);
         lvProduct2.setAdapter(adapterFeelings);
+
         new GetFeeling().execute();
         new GetQuote().execute();
+
     }
 
     private  class GetQuote extends AsyncTask<Void, Void, String>
