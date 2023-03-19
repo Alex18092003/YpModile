@@ -1,5 +1,11 @@
 package com.example.meditation;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
+import android.util.Log;
+
+import java.io.InputStream;
 import java.io.Serializable;
 
 public class MaskUser implements Serializable {
@@ -7,31 +13,32 @@ public class MaskUser implements Serializable {
     private String id;
     private String email;
     private String nickName;
-    private String avatar;
+    private Bitmap avatarBitmap;
     private String token;
+    private String avatar;
+    private String password;
 
-    public MaskUser(String id, String email, String nickName, String avatar, String token) {
+    MaskUser(String id, String email, String nickName, String avatar, String token) {
         this.id = id;
         this.email = email;
         this.nickName = nickName;
-        this.avatar = avatar;
+        new DownloadImageTask()
+                .execute(avatar);
         this.token = token;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
+    MaskUser(String email, String password) {
         this.email = email;
+        this.password = password;
+
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public String getNickName() {
@@ -42,19 +49,52 @@ public class MaskUser implements Serializable {
         this.nickName = nickName;
     }
 
-    public String getAvatar() {
-        return avatar;
+    public String getEmail() {
+        return email;
     }
 
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getToken() {
-        return token;
+    public String getId() {
+        return id;
     }
 
-    public void setToken(String token) {
-        this.token = token;
+    public void setId(String id) {
+        this.id = id;
+    }
+    public Bitmap getAvatarBitmap() {
+        new DownloadImageTask()
+                .execute(avatar);
+        return avatarBitmap;
+    }
+
+    public void setAvatarBitmap(String avatarPath) {
+        new DownloadImageTask()
+                .execute(avatar);
+    }
+
+
+    public class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
+
+
+        protected Bitmap doInBackground(String... urls) {
+            String urldisplay = urls[0];
+            Bitmap mIcon11 = null;
+            try {
+                InputStream in = new java.net.URL(urldisplay).openStream();
+                mIcon11 = BitmapFactory.decodeStream(in);
+            } catch (Exception e) {
+                Log.e("Ошибка передачи изображения", e.getMessage());
+                e.printStackTrace();
+            }
+            avatarBitmap = mIcon11;
+            return mIcon11;
+        }
+
+        protected void onPostExecute(Bitmap result) {
+            avatarBitmap = result;
+        }
     }
 }

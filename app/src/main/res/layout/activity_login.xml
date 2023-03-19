@@ -68,7 +68,7 @@
         app:flow_horizontalAlign="center">
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
@@ -84,7 +84,7 @@
             tools:layout_editor_absoluteY="344dp"></EditText>
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -98,7 +98,7 @@
             app:layout_constraintBottom_toTopOf="@+id/button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText"
+            app:layout_constraintTop_toBottomOf="@+id/Email"
             tools:ignore="TouchTargetSizeCheck"></EditText>
 
     <Button
@@ -109,7 +109,7 @@
         android:text="Sign in"
         android:textAllCaps="false"
         android:textSize="20dp"
-        android:onClick="TransitionToMain"
+        android:onClick="Entrance"
         app:layout_constraintBottom_toTopOf="@+id/textView4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"></Button>

@@ -6,18 +6,26 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.firebase.firestore.auth.User;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -28,11 +36,15 @@ import java.util.List;
 
 public class Main extends AppCompatActivity {
 
-    private  AdapterQuote adapterQuote;
+
+    public static MaskUser CurrentUser;
+    private AdapterQuote adapterQuote;
     private List<MaskQuote> maskQuoteList = new ArrayList<>();
 
-    private  AdapterFeelings adapterFeelings;
+    private AdapterFeelings adapterFeelings;
     private List<MaskFeeling> maskFeelingList = new ArrayList<>();
+
+    final static String userVariableKey = "USER_VARIABLE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,16 +58,21 @@ public class Main extends AppCompatActivity {
         RecyclerView lvProduct2 = findViewById(R.id.ListFeelings);
         lvProduct2.setHasFixedSize(true);
         lvProduct2.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-            adapterFeelings  = new AdapterFeelings(Main.this, maskFeelingList);
+        adapterFeelings = new AdapterFeelings(Main.this, maskFeelingList);
         lvProduct2.setAdapter(adapterFeelings);
 
         new GetFeeling().execute();
         new GetQuote().execute();
 
+        ImageView ava = findViewById(R.id.ava);
+        ava.setImageBitmap(CurrentUser.getAvatarBitmap());
+
+        TextView textHello = findViewById(R.id.textHello);
+        textHello.setText("С возвращением, " + CurrentUser.getNickName() + "!");
     }
 
-    private  class GetQuote extends AsyncTask<Void, Void, String>
-    {
+
+    private class GetQuote extends AsyncTask<Void, Void, String> {
         @Override
         protected String doInBackground(Void... voids) {
             try {
@@ -64,19 +81,17 @@ public class Main extends AppCompatActivity {
                 BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
                 StringBuilder result = new StringBuilder();
                 String line = "";
-                while ((line = reader.readLine())!= null)
-                {
+                while ((line = reader.readLine()) != null) {
                     result.append(line);
                 }
-                return  result.toString();
+                return result.toString();
             } catch (Exception e) {
-                return  null;
+                return null;
             }
         }
 
         @Override
-        protected void onPostExecute(String s)
-        {
+        protected void onPostExecute(String s) {
             super.onPostExecute(s);
             try {
                 maskQuoteList.clear();
@@ -85,11 +100,10 @@ public class Main extends AppCompatActivity {
                 JSONObject object = new JSONObject(s);
                 JSONArray tempArray = object.getJSONArray("data");
 
-                for (int i = 0; i < tempArray.length(); i++)
-                {
+                for (int i = 0; i < tempArray.length(); i++) {
                     JSONObject productJSON = tempArray.getJSONObject(i);
                     MaskQuote tempProduct = new MaskQuote(
-                      productJSON.getInt("id"),
+                            productJSON.getInt("id"),
                             productJSON.getString("title"),
                             productJSON.getString("image"),
                             productJSON.getString("description")
@@ -98,27 +112,23 @@ public class Main extends AppCompatActivity {
                     adapterQuote.notifyDataSetInvalidated();
 
                 }
-            }
-            catch (Exception exception)
-            {
+            } catch (Exception exception) {
                 Toast.makeText(Main.this, "Что-то пошло не так с выводом данных", Toast.LENGTH_LONG).show();
             }
         }
     }
 
-    public  void TransitionToMenu(View v)
-    {
+    public void TransitionToMenu(View v) {
         startActivity(new Intent(this, Menu.class));
 
     }
 
-    public  void TransitionToProfile(View v)
-    {
+    public void TransitionToProfile(View v) {
         startActivity(new Intent(this, Profile.class));
 
     }
 
-    private class GetFeeling extends AsyncTask<Void, Void, String>{
+    private class GetFeeling extends AsyncTask<Void, Void, String> {
 
         @Override
         protected String doInBackground(Void... voids) {
@@ -130,31 +140,27 @@ public class Main extends AppCompatActivity {
                 StringBuilder result = new StringBuilder();
                 String line = "";
 
-                while ((line = reader.readLine()) != null)
-                {
+                while ((line = reader.readLine()) != null) {
                     result.append(line);
                 }
                 return result.toString();
-            }
-            catch (Exception exception)
-            {
+            } catch (Exception exception) {
                 return null;
             }
         }
+
         @RequiresApi(api = Build.VERSION_CODES.N)
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            try
-            {
+            try {
                 maskFeelingList.clear();
                 adapterFeelings.notifyDataSetChanged();
 
                 JSONObject object = new JSONObject(s);
-                JSONArray tempArray  = object.getJSONArray("data");
+                JSONArray tempArray = object.getJSONArray("data");
 
-                for (int i = 0;i<tempArray.length();i++)
-                {
+                for (int i = 0; i < tempArray.length(); i++) {
                     JSONObject productJson = tempArray.getJSONObject(i);
                     MaskFeeling tempProduct = new MaskFeeling(
                             productJson.getInt("id"),
@@ -168,11 +174,17 @@ public class Main extends AppCompatActivity {
                 }
                 maskFeelingList.sort(Comparator.comparing(MaskFeeling::getPosition));
                 adapterFeelings.notifyDataSetChanged();
-            }
-            catch (Exception exception)
-            {
+            } catch (Exception exception) {
                 Toast.makeText(Main.this, "При выводе данных возникла ошибка", Toast.LENGTH_SHORT).show();
             }
         }
+    }
+    // получение ранее сохраненного состояния
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        CurrentUser= (MaskUser) savedInstanceState.get(userVariableKey);
+
     }
 }
