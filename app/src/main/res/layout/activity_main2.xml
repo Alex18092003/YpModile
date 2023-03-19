@@ -31,7 +31,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo"></ImageView>
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/ava"
         android:layout_width="35dp"
         android:onClick="TransitionToProfile"
@@ -39,8 +39,9 @@
         android:layout_marginTop="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView1"
+        app:shapeAppearanceOverlay="@style/img"
         app:layout_constraintTop_toTopOf="parent"
-       ></ImageView>
+       />
 
 
     <TextView

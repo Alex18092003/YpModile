@@ -44,16 +44,16 @@ android:onClick="TransitionToLogin"
         app:srcCompat="@drawable/ellipse2"></TextView>
 
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imageView33"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:onClick="TransitionToProfile"
-
+        app:shapeAppearanceOverlay="@style/img"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView1"
-        app:srcCompat="@drawable/pr"></ImageView>
+        app:srcCompat="@drawable/pr"/>
 
     <TextView
         android:layout_marginTop="20dp"
