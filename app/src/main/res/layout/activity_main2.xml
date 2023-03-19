@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,38 +9,38 @@
     tools:context=".Main"
     android:background="@color/background">
 
-        <ImageView
-            android:id="@+id/ava"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="50dp"
-            android:onClick="TransitionToMenu"
-            app:layout_constraintEnd_toStartOf="@+id/imageView1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/goup36"></ImageView>
+    <ImageView
+        android:id="@+id/avaa"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="50dp"
+        android:onClick="TransitionToMenu"
+        app:layout_constraintEnd_toStartOf="@+id/imageView1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/goup36"></ImageView>
 
-        <ImageView
-            android:id="@+id/imageView1"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            app:layout_constraintEnd_toStartOf="@+id/imageView3"
-            app:layout_constraintStart_toEndOf="@+id/ava"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/logo"></ImageView>
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/ava"
+        app:layout_constraintStart_toEndOf="@+id/avaa"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo"></ImageView>
 
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="35dp"
-            android:onClick="TransitionToProfile"
-            android:layout_height="35dp"
-            android:layout_marginTop="50dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView1"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ellipse2"></ImageView>
+    <ImageView
+        android:id="@+id/ava"
+        android:layout_width="35dp"
+        android:onClick="TransitionToProfile"
+        android:layout_height="35dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView1"
+        app:layout_constraintTop_toTopOf="parent"
+       ></ImageView>
 
 
     <TextView
@@ -86,7 +87,7 @@
         android:id="@+id/ListQuotes"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-
+android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toTopOf="@+id/imageView11"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

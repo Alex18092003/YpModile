@@ -92,6 +92,7 @@
             android:backgroundTint="@color/white"
             android:fontFamily="@font/alegreya_sans"
             android:hint="Пароль"
+            android:inputType="textPassword"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
             android:textSize="18dp"

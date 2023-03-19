@@ -2,7 +2,9 @@ package com.example.meditation;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -27,12 +29,28 @@ public class Login extends AppCompatActivity {
 
         Email = findViewById(R.id.email);
         Password = findViewById(R.id.password);
+
+        SharedPreferences prefs = this.getSharedPreferences(
+                "Date", Context.MODE_PRIVATE);
+        if(prefs != null)
+        {
+            Email.setText(prefs.getString("Email", ""));
+            Password.requestFocus();
+        }
+
     }
 
     public  void TransitionToRegistration(View v)
     {
         startActivity(new Intent(this, Register.class));
 
+    }
+    public Boolean  Proverka()
+    {
+        Pattern pattern = Pattern.compile("@", Pattern.CASE_INSENSITIVE);
+        Matcher m = pattern.matcher(Email.getText().toString());
+        boolean b = m.find();
+        return b;
     }
 
     public void Entrance(View v)
@@ -42,9 +60,7 @@ public class Login extends AppCompatActivity {
             Toast.makeText(Login.this, "Обязательные поля не заполнены", Toast.LENGTH_SHORT).show();
         }
         else {
-            Pattern pattern = Pattern.compile("@", Pattern.CASE_INSENSITIVE);
-            Matcher m = pattern.matcher(Email.getText().toString());
-            boolean b = m.find();
+            boolean b = Proverka();
             if(b) {
                 postData();
             }
@@ -59,8 +75,11 @@ public class Login extends AppCompatActivity {
         startActivity(new Intent(Login.this, Main.class));
 
     }
-
+    public static String Avatar;
+    public static String NickName;
     private void postData() {
+        String email = String.valueOf(Email.getText());
+        String password = String.valueOf(Password.getText());
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://mskko2021.mad.hakta.pro/api/")
@@ -79,6 +98,12 @@ public class Login extends AppCompatActivity {
                 }
                 if(response.body() != null) {
                     if(response.body().getToken() != null) {
+                        SharedPreferences prefs = getSharedPreferences( // Сохранение данных
+                                "Date", Context.MODE_PRIVATE);
+                        prefs.edit().putString("Email", "" + email).apply();
+                        prefs.edit().putString("Avatar", "" + response.body().getAvatarBitmap()).apply();
+                        prefs.edit().putString("NickName", "" + response.body().getNickName()).apply();
+
                         Main.CurrentUser = response.body();
                         startActivity(new Intent(Login.this, Main.class));
                     }

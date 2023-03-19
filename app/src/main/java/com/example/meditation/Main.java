@@ -65,7 +65,7 @@ public class Main extends AppCompatActivity {
 
         TextView textHello = findViewById(R.id.textHello);
         textHello.setText("С возвращением, " + CurrentUser.getNickName() + "!");
-
+        //textHello.setText(textHello.getText().toString() + Login.NickName + "!");
         new GetFeeling().execute();
         new GetQuote().execute();
 
@@ -180,18 +180,19 @@ public class Main extends AppCompatActivity {
             }
         }
     }
-    // получение ранее сохраненного состояния
-//    @Override
-//    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-//        super.onRestoreInstanceState(savedInstanceState);
-//
-//        CurrentUser= (MaskUser) savedInstanceState.get(userVariableKey);
-//
-//    }
-//    @Override
-//    protected void onSaveInstanceState(Bundle outState) {
-//
-//        outState.putAll(outState);
-//        super.onSaveInstanceState(outState);
-//    }
+
+     //получение ранее сохраненного состояния
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        CurrentUser= (MaskUser) savedInstanceState.get(userVariableKey);
+
+    }
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+
+        outState.putAll(outState);
+        super.onSaveInstanceState(outState);
+    }
 }
