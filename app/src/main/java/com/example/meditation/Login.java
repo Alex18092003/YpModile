@@ -45,7 +45,7 @@ public class Login extends AppCompatActivity {
             Pattern pattern = Pattern.compile("@", Pattern.CASE_INSENSITIVE);
             Matcher m = pattern.matcher(Email.getText().toString());
             boolean b = m.find();
-            if(b == true) {
+            if(b) {
                 postData();
             }
             else {
@@ -56,7 +56,7 @@ public class Login extends AppCompatActivity {
 
     public  void TransitionToMain(View v)
     {
-        startActivity(new Intent(this, Main.class));
+        startActivity(new Intent(Login.this, Main.class));
 
     }
 
@@ -73,8 +73,16 @@ public class Login extends AppCompatActivity {
         call.enqueue(new Callback<MaskUser>() {
             @Override
             public void onResponse(Call<MaskUser> call, Response<MaskUser> response) {
-                Main.CurrentUser = response.body();
-                startActivity(new Intent(Login.this, Main.class));
+                if (!response.isSuccessful()) {
+                    Toast.makeText(Login.this, "Пользователь не найден", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(response.body() != null) {
+                    if(response.body().getToken() != null) {
+                        Main.CurrentUser = response.body();
+                        startActivity(new Intent(Login.this, Main.class));
+                    }
+                }
             }
 
             @Override

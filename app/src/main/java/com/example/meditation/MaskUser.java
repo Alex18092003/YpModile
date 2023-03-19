@@ -8,7 +8,7 @@ import android.util.Log;
 import java.io.InputStream;
 import java.io.Serializable;
 
-public class MaskUser implements Serializable {
+public class MaskUser  {
 
     private String id;
     private String email;

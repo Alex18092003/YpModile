@@ -36,7 +36,6 @@ import java.util.List;
 
 public class Main extends AppCompatActivity {
 
-
     public static MaskUser CurrentUser;
     private AdapterQuote adapterQuote;
     private List<MaskQuote> maskQuoteList = new ArrayList<>();
@@ -61,14 +60,16 @@ public class Main extends AppCompatActivity {
         adapterFeelings = new AdapterFeelings(Main.this, maskFeelingList);
         lvProduct2.setAdapter(adapterFeelings);
 
-        new GetFeeling().execute();
-        new GetQuote().execute();
-
         ImageView ava = findViewById(R.id.ava);
         ava.setImageBitmap(CurrentUser.getAvatarBitmap());
 
         TextView textHello = findViewById(R.id.textHello);
         textHello.setText("С возвращением, " + CurrentUser.getNickName() + "!");
+
+        new GetFeeling().execute();
+        new GetQuote().execute();
+
+
     }
 
 
@@ -180,11 +181,17 @@ public class Main extends AppCompatActivity {
         }
     }
     // получение ранее сохраненного состояния
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-
-        CurrentUser= (MaskUser) savedInstanceState.get(userVariableKey);
-
-    }
+//    @Override
+//    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+//        super.onRestoreInstanceState(savedInstanceState);
+//
+//        CurrentUser= (MaskUser) savedInstanceState.get(userVariableKey);
+//
+//    }
+//    @Override
+//    protected void onSaveInstanceState(Bundle outState) {
+//
+//        outState.putAll(outState);
+//        super.onSaveInstanceState(outState);
+//    }
 }
