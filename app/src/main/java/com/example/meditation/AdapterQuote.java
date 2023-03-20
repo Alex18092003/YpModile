@@ -58,7 +58,7 @@ public class AdapterQuote extends BaseAdapter {
             new DownloadImageTask((ImageView) Image).execute(maskQuote.getImage());
         }
 
-        //Image.setImageBitmap(getUserImage(maskQuote.getImage()));
+
         return v;
     }
 

@@ -12,57 +12,51 @@ import android.widget.Toast;
 
 public class Photo extends AppCompatActivity {
 
-    float x, y;
-    String sDown, sMove, sUp;
-    ConstraintLayout toush = null;
+
+    View touch;
+    ImageView imageView4;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_photo);
 
-        toush = findViewById(R.id.toush);
-        toush.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if(event.getAction() == MotionEvent.ACTION_MOVE)
-                {
-                   // startActivity(new Intent(this,Login.class));
-                    Intent i = new Intent(Photo.this, Profile.class);
-                    startActivity(i);
-                }
-//                switch (event.getAction())
-//                {
-//                    case  MotionEvent.ACTION_MOVE:
-//                        startActivity(new Intent(this,
-//                                Login.class));
-//                        break;
-//                    default:
-//                        break;
-//                }
+        imageView4 = findViewById(R.id.imageView4);
+        touch = findViewById(R.id.touch);
+        //Свайпы на фото
+        imageView4.setOnTouchListener(new OnSwipeTouchListener(Photo.this) {
+            public void onSwipeRight() {
+                startActivity(new Intent(Photo.this, Profile.class));
+            }
 
-                return false;
+            public void onSwipeLeft() {
+                try {
+                    Toast.makeText(Photo.this, "Фотография успешно удалена", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(Photo.this, Profile.class));
+                } catch (Exception e) {
+                    Toast.makeText(Photo.this, "При удаление фотографии возникла ошибка!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        //Свайпы на ConstraintLayout
+        touch.setOnTouchListener(new OnSwipeTouchListener(Photo.this) {
+            public void onSwipeRight() {
+                startActivity(new Intent(Photo.this, Profile.class));
+            }
+
+            public void onSwipeLeft() {
+                try {
+                    Toast.makeText(Photo.this, "Фотография успешно удалена", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(Photo.this, Profile.class));
+                } catch (Exception e) {
+                    Toast.makeText(Photo.this, "При удаление фотографии возникла ошибка!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
 
     public  void TransitionToLogin(View v)
     {
-       // startActivity(new Intent(this, Login.class));
+        startActivity(new Intent(this, Profile.class));
 
     }
-
-//    @Override
-//    public boolean onTouch(View v, MotionEvent event) {
-//      x = event.getX();
-//      y = event.getY();
-//      switch (event.getAction())
-//      {
-//          case MotionEvent.ACTION_DOWN:
-//              break;
-//              case  MotionEvent.ACTION_MOVE:
-//                  startActivity(new Intent(this, Login.class));
-//                  break;
-//      }
-//      return  true;
-//    }
 }

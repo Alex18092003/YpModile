@@ -17,17 +17,6 @@ public class Onboarding extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_onboarding);
-
-//
-//        if (Login.u != true) {
-//            SharedPreferences prefs = getSharedPreferences(
-//                    "Date", Context.MODE_PRIVATE);
-//            prefs.edit().putString("Email", "" + email).apply();
-//            prefs.edit().putString("Avatar", "" + response.body().getAvatarBitmap()).apply();
-//            prefs.edit().putString("NickName", "" + response.body().getNickName()).apply();
-//            Main.CurrentUser = response.body();
-//            startActivity(new Intent(this, Login.class));
-//        }
     }
 
     public void TransitionToEntrance(View v) {
