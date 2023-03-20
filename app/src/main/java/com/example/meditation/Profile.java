@@ -41,15 +41,15 @@ public class Profile extends AppCompatActivity {
 
         avatar.setImageBitmap(Main.CurrentUser.getAvatarBitmap());
 
-        Button btn = findViewById(R.id.btn);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
-                photoPickerIntent.setType("image/*");
-               // someActivityResultLauncher.launch(photoPickerIntent);
-            }
-        });
+
+//        btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
+//                photoPickerIntent.setType("image/*");
+//               // someActivityResultLauncher.launch(photoPickerIntent);
+//            }
+//        });
     }
 
 
@@ -88,6 +88,11 @@ public class Profile extends AppCompatActivity {
         prefs.edit().putString("Avatar", "").apply();
         prefs.edit().putString("NickName", "").apply();
         startActivity(new Intent(this, Login.class));
+    }
+
+
+    public void TransitionToPhoto(View v) {
+        startActivity(new Intent(this, Photo.class));
 
     }
 

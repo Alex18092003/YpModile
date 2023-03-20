@@ -34,9 +34,11 @@ public class Login extends AppCompatActivity {
                 "Date", Context.MODE_PRIVATE);
         if(prefs != null)
         {
+
             Email.setText(prefs.getString("Email", ""));
             Password.requestFocus();
         }
+
 
     }
 
@@ -75,6 +77,8 @@ public class Login extends AppCompatActivity {
         startActivity(new Intent(Login.this, Main.class));
 
     }
+
+
     public static String Avatar;
     public static String NickName;
     private void postData() {
@@ -98,11 +102,12 @@ public class Login extends AppCompatActivity {
                 }
                 if(response.body() != null) {
                     if(response.body().getToken() != null) {
-                        SharedPreferences prefs = getSharedPreferences( // Сохранение данных
+                        SharedPreferences prefs = getSharedPreferences(
                                 "Date", Context.MODE_PRIVATE);
                         prefs.edit().putString("Email", "" + email).apply();
                         prefs.edit().putString("Avatar", "" + response.body().getAvatarBitmap()).apply();
                         prefs.edit().putString("NickName", "" + response.body().getNickName()).apply();
+
 
                         Main.CurrentUser = response.body();
                         startActivity(new Intent(Login.this, Main.class));

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Photo"
+    android:id="@+id/toush"
     android:background="@color/background">
 
     <ImageView
